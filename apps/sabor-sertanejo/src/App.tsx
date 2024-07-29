@@ -1,19 +1,12 @@
-import { useState, useEffect } from 'react'
+import { BrowserRouter } from "react-router-dom";
+import Router from "./pages/router";
 
 function App() {
-  const [greetings, setGreetings] = useState("")
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.text())
-      .then(setGreetings)
-  }, [])
-
   return (
-    <>
-      <h1>{greetings}</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
