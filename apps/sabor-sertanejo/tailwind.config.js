@@ -22,7 +22,11 @@ export default {
         dark: '#767676'
       },
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
 }
