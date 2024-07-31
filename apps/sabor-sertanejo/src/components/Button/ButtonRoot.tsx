@@ -15,7 +15,7 @@ const button = tv({
       true: "bg-primary hover:bg-secondary text-secondary hover:text-primary",
     },
     text: {
-      true: "bg-transparent hover:bg-transparent underline text-secondary hover:text-primary",
+      true: "bg-transparent hover:bg-transparent underline text-secondary hover:text-primary p-0",
     },
   },
 
