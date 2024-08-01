@@ -1,6 +1,6 @@
-import { HTMLProps } from "react";
+import { SVGProps } from "react";
 
-function PizzaSlice(props: HTMLProps<HTMLParagraphElement>) {
+function PizzaSlice(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="28"
