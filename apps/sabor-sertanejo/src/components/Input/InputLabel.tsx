@@ -1,13 +1,23 @@
 import { LabelHTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 interface InputLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   text: string;
+  light?: boolean;
 }
+const label = tv({
+  base: "text-secondary",
 
-function InputLabel({ text, ...rest }: InputLabelProps) {
+  variants: {
+    light: {
+      true: "text-tertiary-light",
+    },
+  },
+});
+
+function InputLabel({ text, light, ...rest }: InputLabelProps) {
   return (
-    <label {...rest} className={twMerge("text-secondary", rest.className)}>
+    <label {...rest} className={label({ light, className: rest.className })}>
       {text}
     </label>
   );
