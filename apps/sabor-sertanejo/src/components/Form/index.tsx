@@ -1,18 +1,26 @@
 import { ReactNode, FormHTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode;
+  opaque?: boolean;
 }
 
-export function Form({ children, ...rest }: FormProps) {
+const formVariant = tv({
+  base: "bg-none p-6 gap-6 flex flex-col w-full",
+
+  variants: {
+    opaque: {
+      true: "bg-white shadow-md p-6 gap-6 rounded-lg w-80",
+    },
+  },
+});
+
+export function Form({ children, opaque, ...rest }: FormProps) {
   return (
     <form
       {...rest}
-      className={twMerge(
-        "bg-white shadow-md p-6 gap-6 flex flex-col rounded-lg w-80",
-        rest.className
-      )}
+      className={formVariant({ opaque, className: rest.className })}
     >
       {children}
     </form>
