@@ -14,7 +14,6 @@
   "packageManager": "^npm@10.8.1",
   "dependencies": {
     "lucide-react": "^0.417.0",
-    "sabor-sertanejo": "^0.0.0",
     "tailwind-merge": "^2.4.0",
     "tailwind-variants": "^0.2.1"
   }
