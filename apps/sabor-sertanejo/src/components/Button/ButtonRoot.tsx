@@ -8,7 +8,7 @@ interface ButtonRootProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const button = tv({
-  base: "p-2 rounded-lg flex items-center justify-center gap-2 bg-secondary hover:bg-secondary-dark text-tertiary-light hover:text-primary",
+  base: "px-2 py-3 rounded-lg flex items-center justify-center gap-2 bg-secondary hover:bg-secondary-dark text-tertiary-light hover:text-primary",
 
   variants: {
     primary: {
