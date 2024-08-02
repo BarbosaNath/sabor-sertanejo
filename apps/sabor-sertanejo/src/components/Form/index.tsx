@@ -7,11 +7,11 @@ interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
 }
 
 const formVariant = tv({
-  base: "bg-none p-6 gap-6 flex flex-col w-full",
+  base: "flex flex-col gap-6 bg-none md:px-4 p-6 w-full md:w-3/4",
 
   variants: {
     opaque: {
-      true: "bg-white shadow-md p-6 gap-6 rounded-lg w-80",
+      true: "gap-6 bg-white shadow-md p-6 rounded-lg w-80 md:w-1/2",
     },
   },
 });
