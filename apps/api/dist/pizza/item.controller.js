@@ -84,4 +84,4 @@ __decorate([
 exports.ItemController = ItemController = __decorate([
     (0, common_1.Controller)('items')
 ], ItemController);
-//# sourceMappingURL=pizza.controller.js.map
+//# sourceMappingURL=item.controller.js.map

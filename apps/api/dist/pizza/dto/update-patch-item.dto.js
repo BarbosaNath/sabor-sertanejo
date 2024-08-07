@@ -6,4 +6,4 @@ const mapped_types_1 = require("@nestjs/mapped-types");
 class UpdatePatchItemDTO extends (0, mapped_types_1.PartialType)(create_item_dto_1.CreateItemDTO) {
 }
 exports.UpdatePatchItemDTO = UpdatePatchItemDTO;
-//# sourceMappingURL=update-patch-pizza.dto.js.map
+//# sourceMappingURL=update-patch-item.dto.js.map
