@@ -6,7 +6,10 @@ const common_1 = require("@nestjs/common");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.setGlobalPrefix('api');
-    app.useGlobalPipes(new common_1.ValidationPipe());
+    app.useGlobalPipes(new common_1.ValidationPipe({
+        transform: true,
+        transformOptions: { enableImplicitConversion: true },
+    }));
     await app.listen(3000);
 }
 bootstrap();

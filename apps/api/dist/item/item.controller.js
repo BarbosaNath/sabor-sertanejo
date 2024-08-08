@@ -17,15 +17,19 @@ const common_1 = require("@nestjs/common");
 const create_item_dto_1 = require("./dto/create-item.dto");
 const update_put_item_dto_1 = require("./dto/update-put-item.dto");
 const update_patch_item_dto_1 = require("./dto/update-patch-item.dto");
+const item_service_1 = require("./item.service");
 let ItemController = class ItemController {
+    constructor(itemService) {
+        this.itemService = itemService;
+    }
     async create(body) {
-        return { body };
+        return this.itemService.create(body);
     }
     async list() {
-        return { users: [] };
+        return this.itemService.list();
     }
     async show(id) {
-        return { user: {}, id };
+        return this.itemService.show(id);
     }
     async update(id, body) {
         return { method: 'put', body, id };
@@ -53,14 +57,14 @@ __decorate([
 ], ItemController.prototype, "list", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ItemController.prototype, "show", null);
 __decorate([
     (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, update_put_item_dto_1.UpdatePutItemDTO]),
@@ -82,6 +86,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ItemController.prototype, "delete", null);
 exports.ItemController = ItemController = __decorate([
-    (0, common_1.Controller)('items')
+    (0, common_1.Controller)('items'),
+    __metadata("design:paramtypes", [item_service_1.ItemService])
 ], ItemController);
 //# sourceMappingURL=item.controller.js.map

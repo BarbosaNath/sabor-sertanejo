@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateItemDTO = void 0;
 const class_validator_1 = require("class-validator");
+const client_1 = require("@prisma/client");
 class CreateItemDTO {
 }
 exports.CreateItemDTO = CreateItemDTO;
@@ -21,12 +22,14 @@ __decorate([
 ], CreateItemDTO.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateItemDTO.prototype, "price", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], CreateItemDTO.prototype, "original-price", void 0);
+], CreateItemDTO.prototype, "originalPrice", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
@@ -35,10 +38,24 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
-], CreateItemDTO.prototype, "estimated-time", void 0);
+], CreateItemDTO.prototype, "estimatedTime", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateItemDTO.prototype, "image-url", void 0);
+], CreateItemDTO.prototype, "imageURL", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Boolean)
+], CreateItemDTO.prototype, "isOffer", void 0);
+__decorate([
+    (0, class_validator_1.Matches)(`^${Object.values(client_1.Category)
+        .filter((v) => typeof v !== 'number')
+        .join('|')}$`, 'i'),
+    __metadata("design:type", String)
+], CreateItemDTO.prototype, "category", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], CreateItemDTO.prototype, "stock", void 0);
 //# sourceMappingURL=create-item.dto.js.map

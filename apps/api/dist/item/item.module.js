@@ -9,14 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ItemModule = void 0;
 const common_1 = require("@nestjs/common");
 const item_controller_1 = require("./item.controller");
+const item_service_1 = require("./item.service");
+const prisma_module_1 = require("../prisma/prisma.module");
 let ItemModule = class ItemModule {
 };
 exports.ItemModule = ItemModule;
 exports.ItemModule = ItemModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [prisma_module_1.PrismaModule],
         controllers: [item_controller_1.ItemController],
-        providers: [],
+        providers: [item_service_1.ItemService],
         exports: [],
     })
 ], ItemModule);

@@ -25,16 +25,16 @@ export class ItemController {
 
   @Get()
   async list() {
-    return { users: [] };
+    return this.itemService.list();
   }
 
   @Get(':id')
-  async show(@Param('id', ParseIntPipe) id) {
-    return { user: {}, id };
+  async show(@Param('id') id) {
+    return this.itemService.show(id);
   }
 
   @Put(':id')
-  async update(@Param('id', ParseIntPipe) id, @Body() body: UpdatePutItemDTO) {
+  async update(@Param('id') id, @Body() body: UpdatePutItemDTO) {
     return { method: 'put', body, id };
   }
 

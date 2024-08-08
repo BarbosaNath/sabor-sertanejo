@@ -28,9 +28,16 @@ export class ItemService {
         description,
         category,
       },
-      select: {
-        id: true,
-      },
+    });
+  }
+
+  async list() {
+    return this.prisma.item.findMany();
+  }
+
+  async show(id: string) {
+    return this.prisma.item.findUnique({
+      where: { id },
     });
   }
 }
