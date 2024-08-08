@@ -48,14 +48,32 @@ export declare class ItemController {
         updatedAt: Date;
     }>;
     update(id: any, body: UpdatePutItemDTO): Promise<{
-        method: string;
-        body: UpdatePutItemDTO;
-        id: any;
+        id: string;
+        name: string;
+        price: number;
+        originalPrice: number;
+        description: string;
+        estimatedTime: number;
+        imageURL: string;
+        offer: boolean;
+        category: import(".prisma/client").$Enums.Category;
+        stock: number;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     updatePartial(id: any, body: UpdatePatchItemDTO): Promise<{
-        method: string;
-        body: UpdatePatchItemDTO;
-        id: any;
+        id: string;
+        name: string;
+        price: number;
+        originalPrice: number;
+        description: string;
+        estimatedTime: number;
+        imageURL: string;
+        offer: boolean;
+        category: import(".prisma/client").$Enums.Category;
+        stock: number;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     delete(id: any): Promise<{
         method: string;

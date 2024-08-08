@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CreateItemDTO } from './dto/create-item.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { UpdatePutItemDTO } from './dto/update-put-item.dto';
+import { UpdatePatchItemDTO } from './dto/update-patch-item.dto';
 
 @Injectable()
 export class ItemService {
@@ -38,6 +40,40 @@ export class ItemService {
   async show(id: string) {
     return this.prisma.item.findUnique({
       where: { id },
+    });
+  }
+
+  async update(id: string, data: UpdatePutItemDTO) {
+    return this.prisma.item.update({
+      where: { id },
+      data: {
+        name: data.name,
+        category: data.category,
+        description: data.description,
+        estimatedTime: data.estimatedTime,
+        imageURL: data.imageURL,
+        originalPrice: data.originalPrice,
+        price: data.price,
+        stock: data.stock,
+        offer: data.isOffer,
+      },
+    });
+  }
+
+  async updatePartial(id: string, data: UpdatePatchItemDTO) {
+    return this.prisma.item.update({
+      where: { id },
+      data: {
+        name: data.name,
+        category: data.category,
+        description: data.description,
+        estimatedTime: data.estimatedTime,
+        imageURL: data.imageURL,
+        originalPrice: data.originalPrice,
+        price: data.price,
+        stock: data.stock,
+        offer: data.isOffer,
+      },
     });
   }
 }

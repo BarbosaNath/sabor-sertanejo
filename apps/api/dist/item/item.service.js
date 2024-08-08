@@ -39,6 +39,38 @@ let ItemService = class ItemService {
             where: { id },
         });
     }
+    async update(id, data) {
+        return this.prisma.item.update({
+            where: { id },
+            data: {
+                name: data.name,
+                category: data.category,
+                description: data.description,
+                estimatedTime: data.estimatedTime,
+                imageURL: data.imageURL,
+                originalPrice: data.originalPrice,
+                price: data.price,
+                stock: data.stock,
+                offer: data.isOffer,
+            },
+        });
+    }
+    async updatePartial(id, data) {
+        return this.prisma.item.update({
+            where: { id },
+            data: {
+                name: data.name,
+                category: data.category,
+                description: data.description,
+                estimatedTime: data.estimatedTime,
+                imageURL: data.imageURL,
+                originalPrice: data.originalPrice,
+                price: data.price,
+                stock: data.stock,
+                offer: data.isOffer,
+            },
+        });
+    }
 };
 exports.ItemService = ItemService;
 exports.ItemService = ItemService = __decorate([

@@ -35,15 +35,12 @@ export class ItemController {
 
   @Put(':id')
   async update(@Param('id') id, @Body() body: UpdatePutItemDTO) {
-    return { method: 'put', body, id };
+    return this.itemService.update(id, body);
   }
 
   @Patch(':id')
-  async updatePartial(
-    @Param('id', ParseIntPipe) id,
-    @Body() body: UpdatePatchItemDTO,
-  ) {
-    return { method: 'patch', body, id };
+  async updatePartial(@Param('id') id, @Body() body: UpdatePatchItemDTO) {
+    return this.itemService.updatePartial(id, body);
   }
 
   @Delete(':id')

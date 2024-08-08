@@ -32,10 +32,10 @@ let ItemController = class ItemController {
         return this.itemService.show(id);
     }
     async update(id, body) {
-        return { method: 'put', body, id };
+        return this.itemService.update(id, body);
     }
     async updatePartial(id, body) {
-        return { method: 'patch', body, id };
+        return this.itemService.updatePartial(id, body);
     }
     async delete(id) {
         return { method: 'delete', id };
@@ -72,7 +72,7 @@ __decorate([
 ], ItemController.prototype, "update", null);
 __decorate([
     (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, update_patch_item_dto_1.UpdatePatchItemDTO]),
