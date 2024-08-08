@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString, Matches, isNotEmpty } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsNumberString,
+  IsString,
+  Matches,
+} from 'class-validator';
 import { Category } from '@prisma/client';
 
 export class CreateItemDTO {
@@ -7,9 +13,11 @@ export class CreateItemDTO {
   name: string;
 
   @IsNotEmpty()
+  @IsNumber()
   price: number;
 
   @IsNotEmpty()
+  @IsNumber()
   originalPrice: number;
 
   @IsNotEmpty()
