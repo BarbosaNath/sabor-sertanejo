@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, Matches, isNotEmpty } from 'class-validator';
+import { Category } from '@prisma/client';
 
 export class CreateItemDTO {
   @IsNotEmpty()
@@ -6,25 +7,39 @@ export class CreateItemDTO {
   name: string;
 
   @IsNotEmpty()
-  //   @IsPositive()
-  //   @IsNumber({ maxDecimalPlaces: 2 })
   price: number;
 
   @IsNotEmpty()
-  //   @IsPositive()
-  //   @IsNumber({ maxDecimalPlaces: 2 })
-  'original-price': number;
+  originalPrice: number;
 
   @IsNotEmpty()
   @IsString()
   description: string;
 
   @IsNotEmpty()
-  //   @IsPositive()
-  //   @IsNumber({ maxDecimalPlaces: 0 })
-  'estimated-time': number;
+  estimatedTime: number;
 
   @IsNotEmpty()
   @IsString()
-  'image-url': string;
+  imageURL: string;
+
+  @IsNotEmpty()
+  isOffer: boolean;
+
+  @Matches(
+    `^${Object.values(Category)
+      .filter((v) => typeof v !== 'number')
+      .join('|')}$`,
+    'i',
+  )
+  category: Category;
+
+  @IsNotEmpty()
+  stock: number;
+
+  // favoritedBy: string[];
+  // order: string[];
+
+  // createdAt: Date;
+  // updatedAt: Date;
 }
