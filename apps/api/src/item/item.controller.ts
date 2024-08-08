@@ -12,12 +12,15 @@ import {
 import { CreateItemDTO } from './dto/create-item.dto';
 import { UpdatePutItemDTO } from './dto/update-put-item.dto';
 import { UpdatePatchItemDTO } from './dto/update-patch-item.dto';
+import { ItemService } from './item.service';
 
 @Controller('items')
 export class ItemController {
+  constructor(private readonly itemService: ItemService) {}
+
   @Post()
   async create(@Body() body: CreateItemDTO) {
-    return { body };
+    return this.itemService.create(body);
   }
 
   @Get()
