@@ -3,14 +3,14 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PizzaModule } from './pizza/pizza.module';
+import { ItemModule } from './pizza/pizza.module';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'sabor-sertanejo', 'dist'),
     }),
-    PizzaModule,
+    ItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],

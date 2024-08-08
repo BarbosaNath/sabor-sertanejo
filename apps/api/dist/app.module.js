@@ -22,7 +22,7 @@ exports.AppModule = AppModule = __decorate([
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: (0, path_1.join)(__dirname, '../..', 'sabor-sertanejo', 'dist'),
             }),
-            pizza_module_1.PizzaModule,
+            pizza_module_1.ItemModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

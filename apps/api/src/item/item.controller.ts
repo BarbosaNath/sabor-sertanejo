@@ -9,14 +9,14 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreatePizzaDTO } from './dto/create-pizza.dto';
-import { UpdatePutPizzaDTO } from './dto/update-put-pizza.dto';
-import { UpdatePatchPizzaDTO } from './dto/update-patch-pizza.dto';
+import { CreateItemDTO } from './dto/create-item.dto';
+import { UpdatePutItemDTO } from './dto/update-put-item.dto';
+import { UpdatePatchItemDTO } from './dto/update-patch-item.dto';
 
-@Controller('pizzas')
-export class PizzaController {
+@Controller('items')
+export class ItemController {
   @Post()
-  async create(@Body() body: CreatePizzaDTO) {
+  async create(@Body() body: CreateItemDTO) {
     return { body };
   }
 
@@ -31,14 +31,14 @@ export class PizzaController {
   }
 
   @Put(':id')
-  async update(@Param('id', ParseIntPipe) id, @Body() body: UpdatePutPizzaDTO) {
+  async update(@Param('id', ParseIntPipe) id, @Body() body: UpdatePutItemDTO) {
     return { method: 'put', body, id };
   }
 
   @Patch(':id')
   async updatePartial(
     @Param('id', ParseIntPipe) id,
-    @Body() body: UpdatePatchPizzaDTO,
+    @Body() body: UpdatePatchItemDTO,
   ) {
     return { method: 'patch', body, id };
   }
