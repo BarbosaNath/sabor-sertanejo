@@ -3,7 +3,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ItemModule } from './pizza/pizza.module';
+import { ItemModule } from './item/item.module';
 
 @Module({
   imports: [

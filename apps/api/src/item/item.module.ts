@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ItemController } from './pizza.controller';
+import { ItemController } from './item.controller';
 
 @Module({
   imports: [],
