@@ -75,4 +75,18 @@ export declare class ItemService {
         createdAt: Date;
         updatedAt: Date;
     }>;
+    delete(id: string): Promise<{
+        id: string;
+        name: string;
+        price: number;
+        originalPrice: number;
+        description: string;
+        estimatedTime: number;
+        imageURL: string;
+        offer: boolean;
+        category: import(".prisma/client").$Enums.Category;
+        stock: number;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
 }

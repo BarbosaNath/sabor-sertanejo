@@ -38,7 +38,7 @@ let ItemController = class ItemController {
         return this.itemService.updatePartial(id, body);
     }
     async delete(id) {
-        return { method: 'delete', id };
+        return this.itemService.delete(id);
     }
 };
 exports.ItemController = ItemController;

@@ -76,4 +76,10 @@ export class ItemService {
       },
     });
   }
+
+  async delete(id: string) {
+    return this.prisma.item.delete({
+      where: { id },
+    });
+  }
 }

@@ -76,7 +76,17 @@ export declare class ItemController {
         updatedAt: Date;
     }>;
     delete(id: any): Promise<{
-        method: string;
-        id: any;
+        id: string;
+        name: string;
+        price: number;
+        originalPrice: number;
+        description: string;
+        estimatedTime: number;
+        imageURL: string;
+        offer: boolean;
+        category: import(".prisma/client").$Enums.Category;
+        stock: number;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
 }
