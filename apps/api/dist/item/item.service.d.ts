@@ -89,4 +89,5 @@ export declare class ItemService {
         createdAt: Date;
         updatedAt: Date;
     }>;
+    exists(id: string): Promise<void>;
 }

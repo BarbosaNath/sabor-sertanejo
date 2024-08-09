@@ -40,6 +40,7 @@ let ItemService = class ItemService {
         });
     }
     async update(id, data) {
+        await this.exists(id);
         return this.prisma.item.update({
             where: { id },
             data: {
@@ -56,6 +57,7 @@ let ItemService = class ItemService {
         });
     }
     async updatePartial(id, data) {
+        await this.exists(id);
         return this.prisma.item.update({
             where: { id },
             data: {
@@ -72,9 +74,15 @@ let ItemService = class ItemService {
         });
     }
     async delete(id) {
+        await this.exists(id);
         return this.prisma.item.delete({
             where: { id },
         });
+    }
+    async exists(id) {
+        if (!(await this.show(id))) {
+            throw new common_1.NotFoundException(`Item ${id} doesn't exist.`);
+        }
     }
 };
 exports.ItemService = ItemService;

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateItemDTO } from './dto/create-item.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdatePutItemDTO } from './dto/update-put-item.dto';
@@ -44,6 +44,8 @@ export class ItemService {
   }
 
   async update(id: string, data: UpdatePutItemDTO) {
+    await this.exists(id);
+
     return this.prisma.item.update({
       where: { id },
       data: {
@@ -61,6 +63,8 @@ export class ItemService {
   }
 
   async updatePartial(id: string, data: UpdatePatchItemDTO) {
+    await this.exists(id);
+
     return this.prisma.item.update({
       where: { id },
       data: {
@@ -78,8 +82,16 @@ export class ItemService {
   }
 
   async delete(id: string) {
+    await this.exists(id);
+
     return this.prisma.item.delete({
       where: { id },
     });
+  }
+
+  async exists(id: string) {
+    if (!(await this.show(id))) {
+      throw new NotFoundException(`Item ${id} doesn't exist.`);
+    }
   }
 }
