@@ -1,5 +1,6 @@
 import { Heart, ShoppingCart } from "lucide-react";
 import { Button } from "../Button";
+import { tv } from "tailwind-variants";
 
 interface ItemProps {
   imageURL: string;
@@ -7,7 +8,18 @@ interface ItemProps {
   estimatedTime: number;
   price: number;
   originalPrice: number;
+  large?: boolean;
 }
+
+const itemRoot = tv({
+  base: "flex text-tertiary-light gap-4",
+
+  variants: {
+    large: {
+      true: "p-4 bg-tertiary-light rounded-lg text-secondary w-60 h-[360px] flex-col",
+    },
+  },
+});
 
 function Item({
   imageURL,
@@ -15,6 +27,7 @@ function Item({
   estimatedTime,
   price,
   originalPrice,
+  large,
 }: ItemProps) {
   const formatter = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -22,20 +35,22 @@ function Item({
   });
 
   return (
-    <div className="flex justify-between text-tertiary-light">
-      <div className="flex gap-4">
-        <div className="relative">
-          <img
-            src={imageURL}
-            alt={"Image of " + name}
-            className="rounded-lg object-cover size-16"
-          />
-          <Heart
-            className="right-1 bottom-1 z-10 absolute hover:cursor-pointer"
-            strokeWidth={3}
-          />
-        </div>
-        <div className="flex flex-col justify-between leading-none">
+    <div className={itemRoot({ large })}>
+      <div className="relative">
+        <img
+          src={imageURL}
+          alt={"Image of " + name}
+          className={`rounded-lg  ${large && "w-[208px] h-[247px]"} object-cover size-16 ${!large && "max-w-fit"}`}
+        />
+        <Heart
+          className="right-1 bottom-1 absolute text-tertiary-light hover:cursor-pointer"
+          strokeWidth={2}
+          fill="rgba(255, 255, 255, 0.2)"
+        />
+      </div>
+
+      <div className="flex justify-between w-full h-full">
+        <div className="flex flex-col justify-between gap-2 mr-auto h-full leading-none">
           <h4>{name}</h4>
           <div className="flex gap-2 leading-none">
             <p className="font-bold leading-none">{formatter.format(price)}</p>
@@ -49,10 +64,12 @@ function Item({
             {estimatedTime / 60} minutos
           </p>
         </div>
+        <Button.Root
+          className={`bg-secondary-light self-center size-10 ${large && "self-end"}`}
+        >
+          <Button.Icon icon={ShoppingCart} />
+        </Button.Root>
       </div>
-      <Button.Root className="bg-secondary-light self-center size-10">
-        <Button.Icon icon={ShoppingCart} />
-      </Button.Root>
     </div>
   );
 }
