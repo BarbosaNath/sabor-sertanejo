@@ -63,7 +63,7 @@ function Item({
             )}
           </div>
           <p className="text-sm text-tertiary leading-none">
-            {estimatedTime / 60} minutos
+            {(estimatedTime / 60).toFixed(0)} minutos
           </p>
         </div>
         <Button.Root
