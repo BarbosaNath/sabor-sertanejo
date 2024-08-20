@@ -8,6 +8,7 @@ interface ItemProps {
   estimatedTime: number;
   price: number;
   originalPrice: number;
+  className: string;
   large?: boolean;
 }
 
@@ -16,7 +17,7 @@ const itemRoot = tv({
 
   variants: {
     large: {
-      true: "p-4 bg-tertiary-light rounded-lg text-secondary w-60 h-[360px] flex-col",
+      true: "p-4 bg-tertiary-light shrink-0 rounded-lg text-secondary w-60 h-[360px] flex-col",
     },
   },
 });
@@ -27,6 +28,7 @@ function Item({
   estimatedTime,
   price,
   originalPrice,
+  className,
   large,
 }: ItemProps) {
   const formatter = new Intl.NumberFormat("pt-BR", {
@@ -35,7 +37,7 @@ function Item({
   });
 
   return (
-    <div className={itemRoot({ large })}>
+    <div className={itemRoot({ large, className })}>
       <div className="relative">
         <img
           src={imageURL}
