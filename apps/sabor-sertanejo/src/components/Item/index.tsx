@@ -10,6 +10,7 @@ interface ItemProps {
   originalPrice: number;
   className: string;
   large?: boolean;
+  showCartIcon?: boolean;
 }
 
 const itemRoot = tv({
@@ -30,6 +31,7 @@ function Item({
   originalPrice,
   className,
   large,
+  showCartIcon = true,
 }: ItemProps) {
   const formatter = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -66,11 +68,13 @@ function Item({
             {(estimatedTime / 60).toFixed(0)} minutos
           </p>
         </div>
-        <Button.Root
-          className={`bg-secondary-light self-center size-10 ${large && "self-end"}`}
-        >
-          <Button.Icon icon={ShoppingCart} />
-        </Button.Root>
+        {showCartIcon && (
+          <Button.Root
+            className={`bg-secondary-light self-center size-10 ${large && "self-end"}`}
+          >
+            <Button.Icon icon={ShoppingCart} />
+          </Button.Root>
+        )}
       </div>
     </div>
   );
